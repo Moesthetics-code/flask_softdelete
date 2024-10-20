@@ -20,6 +20,7 @@ To install Flask-Softdelete, use pip:
 
 ```bash
 pip install Flask-Softdelete
+```
 
 
 ## Configuration
