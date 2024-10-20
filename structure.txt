@@ -1,0 +1,12 @@
+flask_softdelete/
+│
+├── flask_softdelete/
+│   ├── __init__.py      # Main file to initialize the package
+│   ├── softdelete.py    # File containing your class and logic
+│
+├── tests/               # New directory for test files
+│   ├── test_softdelete.py  # Test cases for SoftDeleteMixin
+│
+├── setup.py             # File for setting up and publishing the package
+├── README.md            # Project description
+└── LICENSE              # License (e.g., MIT License)
