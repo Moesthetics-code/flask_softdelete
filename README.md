@@ -37,6 +37,8 @@ db = SQLAlchemy(app)
 
 ## Usage
 
+## Base Model
+
 ```bash
 class SampleModel(db.Model, SoftDeleteMixin):
     __tablename__ = 'sample_model'
