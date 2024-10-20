@@ -14,7 +14,7 @@ setup(
     long_description_content_type='text/markdown',
     author="Mohamed Ndiaye",
     author_email="mintok2000@gmail.com",
-    url="https://github.com/votre-profil/flask-softdelete",
+    url="https://github.com/Moesthetics-code/flask-softdelete",
     packages=find_packages(),
     install_requires=[
         'Flask>=2.0.0',
