@@ -24,7 +24,7 @@ pip install Flask-Softdelete
 
 ## Configuration
 
-```bash
+```python
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_softdelete import SoftDeleteMixin
@@ -38,7 +38,7 @@ db = SQLAlchemy(app)
 
 ## Base Model
 
-```bash
+```python
 class SampleModel(db.Model, SoftDeleteMixin):
     __tablename__ = 'sample_model'
 
@@ -58,7 +58,7 @@ force_delete(): Permanently removes the record from the database, which cannot b
 
 # Create a new record
 
-```bash
+```python
 sample = SampleModel(name="Example")
 db.session.add(sample)
 db.session.commit()
@@ -75,7 +75,7 @@ sample.force_delete()
 
 ## Logging
 
-```bash
+```python
 import logging
 
 logging.basicConfig(level=logging.INFO)
