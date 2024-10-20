@@ -1,0 +1,39 @@
+Metadata-Version: 2.1
+Name: flask-softdelete
+Version: 0.1.1
+Summary: A simple mixin for adding soft delete functionality to Flask-SQLAlchemy models
+Home-page: https://github.com/Moesthetics-code/flask-softdelete
+Author: Mohamed Ndiaye
+Author-email: mintok2000@gmail.com
+Classifier: Programming Language :: Python :: 3
+Classifier: Framework :: Flask
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENCE
+Requires-Dist: Flask>=2.0.0
+Requires-Dist: Flask-SQLAlchemy>=2.5.0
+
+# Flask-Softdelete
+
+Flask-SoftDelete is a simple extension for Flask applications that adds soft delete functionality to Flask-SQLAlchemy models. Instead of permanently deleting records, soft deleting allows you to mark records as "deleted" without actually removing them from the database. This is useful for keeping a history of deleted records or allowing for easy restoration.
+
+## Table of Contents
+
+- [Installation](#installation)
+- [Configuration](#configuration)
+- [Usage](#usage)
+  - [Base Model](#base-model)
+  - [Record Management Methods](#record-management-methods)
+- [Examples](#examples)
+- [Logging](#logging)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Installation
+
+To install Flask-Softdelete, use pip:
+
+```bash
+pip install Flask-Softdelete

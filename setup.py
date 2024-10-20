@@ -8,7 +8,7 @@ if not os.path.exists(readme_file):
 
 setup(
     name="flask-softdelete",
-    version="0.1.0",
+    version="0.1.1",
     description="A simple mixin for adding soft delete functionality to Flask-SQLAlchemy models",
     long_description=open(readme_file).read(),
     long_description_content_type='text/markdown',

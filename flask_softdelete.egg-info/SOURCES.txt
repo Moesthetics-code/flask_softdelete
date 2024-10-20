@@ -1,0 +1,11 @@
+LICENCE
+README.md
+setup.py
+flask_softdelete/__init__.py
+flask_softdelete/softdelete.py
+flask_softdelete.egg-info/PKG-INFO
+flask_softdelete.egg-info/SOURCES.txt
+flask_softdelete.egg-info/dependency_links.txt
+flask_softdelete.egg-info/requires.txt
+flask_softdelete.egg-info/top_level.txt
+tests/test_softdelete.py
