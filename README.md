@@ -22,7 +22,6 @@ To install Flask-Softdelete, use pip:
 pip install Flask-Softdelete
 ```
 
-
 ## Configuration
 
 ```bash
@@ -42,7 +41,7 @@ db = SQLAlchemy(app)
 ```bash
 class SampleModel(db.Model, SoftDeleteMixin):
     __tablename__ = 'sample_model'
-    
+
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50))
 ```
@@ -97,16 +96,3 @@ If you encounter any issues, please report them in the Issues section of the Git
 ## License
 
 This project is licensed under the MIT License. See the LICENSE file for more details.
-
-
-### Changements Apportés :
-1. **Installation** : Ajout de détails sur l'installation de Flask et Flask-SQLAlchemy.
-2. **Configuration** : Précisions sur l'URI de la base de données.
-3. **Usage** : Clarifications sur l'héritage de modèle et les méthodes de gestion.
-4. **Exemples** : Exemple d'utilisation de chaque méthode.
-5. **Logging** : Explication de la configuration du logging.
-6. **Contributing** : Ajout d'informations sur la manière de contribuer et de signaler des problèmes.
-
-Ces ajouts rendent chaque section plus informative et permettent aux utilisateurs de mieux comprendre comment utiliser votre module `Flask-Softdelete`.
-
-
