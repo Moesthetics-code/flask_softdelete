@@ -1,6 +1,8 @@
 from datetime import datetime, timezone
 from flask_sqlalchemy import SQLAlchemy
 from flask import current_app
+import logging
+
 
 db = SQLAlchemy()
 
@@ -17,13 +19,12 @@ class SoftDeleteMixin:
             self.deleted_at = datetime.now(timezone.utc)  # Ensure timezone-aware datetime
             if user_id:
                 self.deleted_by = user_id
-            
-            db.session.commit()
+
+            db.session.flush()  # Flush changes to the database
             current_app.logger.info(f"Record soft-deleted by user {user_id} at {self.deleted_at}")
         except Exception as e:
             current_app.logger.error(f"Error soft-deleting record: {str(e)}")
             db.session.rollback()  # Rollback the transaction if an error occurs
-
 
     def restore(self, user_id=None):
         """Restore a soft-deleted record by setting deleted_at to None."""
@@ -33,6 +34,7 @@ class SoftDeleteMixin:
             if user_id:
                 self.restored_by = user_id
 
+            # No need to add the object to the session, just commit the change
             db.session.commit()
             current_app.logger.info(f"Record restored by user {user_id}")
         except Exception as e:
@@ -64,26 +66,25 @@ class SoftDeleteMixin:
     def force_delete(self):
         """Permanently delete the record from the database."""
         try:
-            db.session.delete(self)  # Merge to ensure it's in the current session
-            db.session.commit()
+            db.session.expunge(self)  # Expulse l'objet de la session
+            db.session.delete(self)  # Supprime l'objet
+            db.session.commit()  # Commit the deletion
             current_app.logger.info("Record permanently deleted")
         except Exception as e:
             current_app.logger.error(f"Error force-deleting record: {str(e)}")
-            db.session.rollback()
+            db.session.rollback()  # Rollback in case of error
 
-    """@classmethod
+    @classmethod
     def force_delete_all_deleted(cls):
-       Permanently delete all soft-deleted records.
+        """Permanently delete all soft-deleted records."""
         try:
             deleted_records = cls.query.filter(cls.deleted_at.isnot(None)).all()
             for record in deleted_records:
-                db.session.delete(db.session.merge(record))  # Merge to ensure it's in the current session
-
-            db.session.commit()
+                record.force_delete()  # Call the force_delete method for each record
             current_app.logger.info(f"Permanently deleted {len(deleted_records)} soft-deleted records")
         except Exception as e:
             current_app.logger.error(f"Error force-deleting all deleted records: {str(e)}")
-            db.session.rollback()"""
+            db.session.rollback()
 
 
     @classmethod

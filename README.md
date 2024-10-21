@@ -48,11 +48,21 @@ class SampleModel(db.Model, SoftDeleteMixin):
 
 ## Record Management Methods
 
-Flask-Softdelete provides methods for managing soft delete functionality:
+Flask-Softdelete provides the following methods for managing soft delete functionality:
 
-soft_delete(): Marks the record as deleted, but keeps it in the database.
-restore(): Restores a soft-deleted record, making it active again.
-force_delete(): Permanently removes the record from the database, which cannot be undone.
+soft_delete(user_id=None): Marks the record as deleted by setting a deleted_at timestamp. You can also specify the ID of the user who performed the deletion.
+
+restore(user_id=None): Restores a soft-deleted record by resetting deleted_at. You can also specify the ID of the user who performed the restoration.
+
+force_delete(): Permanently removes the record from the database, an action that cannot be undone.
+
+get_active(): Retrieves all records that are not soft-deleted.
+
+get_deleted(): Retrieves only the records that have been soft-deleted.
+
+force_delete_all_deleted(): Permanently deletes all records that have been soft-deleted.
+
+restore_all(): Restores all soft-deleted records.
 
 ## Examples
 
@@ -62,15 +72,48 @@ force_delete(): Permanently removes the record from the database, which cannot b
 sample = SampleModel(name="Example")
 db.session.add(sample)
 db.session.commit()
+```
 
 # Soft delete the record
-sample.soft_delete()
+
+```python
+sample.soft_delete(user_id=1)
+```
 
 # Restore the record
-sample.restore()
+
+```python
+sample.restore(user_id=1)
+```
 
 # Permanently delete the record
+
+```python
 sample.force_delete()
+```
+
+# Retrieve All Active Records
+
+```python
+active_records = SampleModel.get_active()
+```
+
+# Retrieve All Deleted Records
+
+```python
+deleted_records = SampleModel.get_deleted()
+```
+
+# Permanently Delete All Deleted Records
+
+```python
+SampleModel.force_delete_all_deleted()
+```
+
+# Restore All Deleted Records
+
+```python
+SampleModel.restore_all()
 ```
 
 ## Logging
@@ -117,3 +160,6 @@ furnished to do so, subject to the following conditions:
    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
    SOFTWARE.
 
+```vbnet
+This README provides a comprehensive overview of the Flask-SoftDelete module, including its installation, configuration, usage, methods, and examples. Let me know if you need any further adjustments or additions!
+```

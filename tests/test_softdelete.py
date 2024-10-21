@@ -106,7 +106,7 @@ def test_force_delete(client):
     assert SampleModel.query.count() == 0  # It should be permanently deleted
 
 
-"""def test_force_delete_all_deleted(client):
+def test_force_delete_all_deleted(client):
     sample1 = SampleModel()
     sample2 = SampleModel()
     db.session.add(sample1)
@@ -124,7 +124,7 @@ def test_force_delete(client):
     count = SampleModel.query.count()
     logging.info("After force deletion, count is: %d", count)
 
-    assert count == 0  # All should be permanently deleted"""
+    assert count == 0  # All should be permanently deleted
 
 
 def test_restore_all(client):

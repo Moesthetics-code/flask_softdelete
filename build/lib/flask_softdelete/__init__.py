@@ -1,1 +1,0 @@
-from .softdelete import SoftDeleteMixin
