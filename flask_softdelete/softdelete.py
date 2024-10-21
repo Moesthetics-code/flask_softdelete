@@ -64,7 +64,7 @@ class SoftDeleteMixin:
     def force_delete(self):
         """Permanently delete the record from the database."""
         try:
-            db.session.delete(db.session.merge(self))  # Merge to ensure it's in the current session
+            db.session.delete(self)  # Merge to ensure it's in the current session
             db.session.commit()
             current_app.logger.info("Record permanently deleted")
         except Exception as e:
