@@ -6,11 +6,16 @@ Base models
 
 .. code-block:: python
 
-    class SampleModel(db.Model, SoftDeleteMixin):
-    __tablename__ = 'sample_model'
+    from flask_softdelete import SoftDeleteMixin
+    from flask_sqlalchemy import SQLAlchemy
 
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(50))
+    db = SQLAlchemy()
+
+    class SampleModel(db.Model, SoftDeleteMixin):
+        __tablename__ = 'sample_model'
+
+        id = db.Column(db.Integer, primary_key=True)
+        name = db.Column(db.String(50))
 
 
 Record Management Methods

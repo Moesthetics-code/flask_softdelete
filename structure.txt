@@ -6,6 +6,12 @@ flask_softdelete/
 │
 ├── tests/               # New directory for test files
 │   ├── test_softdelete.py  # Test cases for SoftDeleteMixin
+|
+├── .readthedocs.yaml
+├── docs/
+│   ├── conf.py
+│   ├── index.rst
+│   └── requirements.txt
 │
 ├── setup.py             # File for setting up and publishing the package
 ├── README.md            # Project description
