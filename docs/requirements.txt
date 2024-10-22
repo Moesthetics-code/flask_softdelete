@@ -1,0 +1,2 @@
+sphinx
+sphinx-rtd-theme  # Si vous utilisez le thème Read the Docs

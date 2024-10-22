@@ -1,1 +1,3 @@
 venv/
+# Exclure les fichiers générés par Sphinx
+docs/_build/
